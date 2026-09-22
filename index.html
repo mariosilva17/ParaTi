@@ -216,6 +216,23 @@
     opacity: 0;
   }
 
+  .poem .line{
+    opacity: 0;
+  }
+  @media (prefers-reduced-motion: no-preference){
+    .content:not(.hidden-init) .poem .line{
+      animation: line-in 1.1s ease-out both;
+      animation-delay: calc(0.4s + var(--d) * 1.3s);
+    }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .poem .line{ opacity: 1; }
+  }
+  @keyframes line-in{
+    from{ opacity: 0; transform: translateY(6px); }
+    to{ opacity: 1; transform: translateY(0); }
+  }
+
   .player-wrap{
     width: 100%;
     max-width: 320px;
@@ -224,6 +241,31 @@
   .player-wrap iframe{
     display: block;
     width: 100%;
+    border-radius: 12px;
+  }
+  .player-caption{
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink-soft);
+    text-align: center;
+    margin: 0 0 10px;
+    opacity: 0;
+    transition: opacity 0.8s ease 0.5s;
+  }
+  .content:not(.hidden-init) .player-caption{
+    opacity: 1;
+  }
+  .player-glow{
+    border-radius: 16px;
+    padding: 3px;
+  }
+  .content:not(.hidden-init) .player-glow{
+    animation: glow-pulse 1.6s ease-in-out 0.6s 3;
+  }
+  @keyframes glow-pulse{
+    0%, 100% { box-shadow: 0 0 0 0 rgba(201,154,46,0); }
+    50% { box-shadow: 0 0 0 8px rgba(201,154,46,0.18); }
   }
 </style>
 </head>
@@ -247,8 +289,7 @@
         <circle cx="0" cy="0" r="8" fill="#8B5E34"/>
       </g>
     </svg>
-    <p class="cover-label">Jeymi, te extraño...</p>
-    <p class="cover-hint">toca la flor</p>
+    <p class="cover-label">Jeymi</p>
   </div>
 
   <div class="content hidden-init" id="content">
@@ -332,33 +373,26 @@
     <p class="kicker">para ti</p>
     <h1>Conociéndote</h1>
 
-    <div class="player-wrap">
-      <iframe src="https://open.spotify.com/embed/track/6Er8Fz6fuZNi5cvwQjv1ya?utm_source=generator"
-        width="100%" height="152" frameborder="0" allowfullscreen=""
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy"></iframe>
-    </div>
-
     <div class="poem bloom">
-      <p>Hay algo lindo en esto que empieza,<br>
-      en irte descubriendo despacio,<br>
-      tus ojos, esa forma tuya de entregarte a lo que haces,<br>
-      la calma que me das sin siquiera intentarlo.</p>
+      <p class="line" style="--d:0">Pienso en ti sin proponérmelo,<br>
+      apareces en medio del día, sin avisar,<br>
+      tus ojos se me quedan,<br>
+      y no sé bien por qué, pero ahí están.</p>
 
-      <p>Contigo el tiempo se siente distinto,<br>
-      más lento, más mío, más cierto,<br>
-      me pones nervioso de la manera buena,<br>
-      esa que a uno lo hace querer ser mejor persona.</p>
+      <p class="line" style="--d:1">Me gusta ir descubriéndote poco a poco,<br>
+      esa calma que transmites solo por ser como eres,<br>
+      la buena vibra que me das sin buscarla,<br>
+      y extraño tu compañía cuando no estás.</p>
 
-      <p>No sé todavía qué nombre tiene esto,<br>
-      solo sé que quiero seguir aquí,<br>
+      <p class="line" style="--d:2">Me pones nervioso, lo admito,<br>
+      del tipo de nervios que dan ganas de ser mejor,<br>
+      y siento cosas bonitas por ti,<br>
+      eso ya te lo dije, y te lo repito ahora.</p>
+
+      <p class="line" style="--d:3">No sé todavía qué nombre tiene esto.<br>
+      Solo sé que quiero seguir aquí,<br>
       conociéndote un poco más cada día,<br>
-      dejando que lo bonito siga su curso.</p>
-
-      <p>Porque hay amores que empiezan gritando<br>
-      y otros que llegan despacio, como el tuyo,<br>
-      y yo, sin apuro,<br>
-      solo quiero seguir descubriéndote.</p>
+      pensando en ti, sin avisar.</p>
     </div>
 
     <div class="divider">
@@ -369,6 +403,14 @@
     </div>
 
     <p class="closing">con calma, sin apuro, contigo</p>
+
+    <p class="player-caption">esto sonaba mientras lo escribía</p>
+    <div class="player-wrap">
+      <iframe src="https://open.spotify.com/embed/track/6Er8Fz6fuZNi5cvwQjv1ya?utm_source=generator"
+        width="100%" height="152" frameborder="0" allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"></iframe>
+    </div>
 
     <div class="footer-flowers">
       <svg width="120" height="40" viewBox="0 0 120 40" fill="none">
