@@ -215,6 +215,16 @@
   .content.hidden-init{
     opacity: 0;
   }
+
+  .player-wrap{
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto 34px;
+  }
+  .player-wrap iframe{
+    display: block;
+    width: 100%;
+  }
 </style>
 </head>
 <body>
@@ -322,6 +332,13 @@
     <p class="kicker">para ti</p>
     <h1>Conociéndote</h1>
 
+    <div class="player-wrap">
+      <iframe src="https://open.spotify.com/embed/track/6Er8Fz6fuZNi5cvwQjv1ya?utm_source=generator"
+        width="100%" height="152" frameborder="0" allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"></iframe>
+    </div>
+
     <div class="poem bloom">
       <p>Hay algo lindo en esto que empieza,<br>
       en irte descubriendo despacio,<br>
@@ -383,77 +400,9 @@
     var content = document.getElementById('content');
     var opened = false;
 
-    // --- melodía original de piano suave, generada con Web Audio API ---
-    // Progresión simple en Do mayor, arpegiada, en loop discreto de fondo.
-    var ctx = null;
-    var masterGain = null;
-    var isPlaying = false;
-    var loopTimer = null;
-
-    var notes = {
-      C4: 261.63, D4: 293.66, E4: 329.63, F4: 349.23, G4: 392.00, A4: 440.00, B4: 493.88,
-      C5: 523.25, D5: 587.33, E5: 659.25, G5: 783.99
-    };
-
-    // secuencia de arpegios suaves (progresión C - Am - F - G)
-    var sequence = [
-      ['C4','E4','G4','C5'],
-      ['A4','C5','E5','C5'],
-      ['F4','A4','C5','A4'],
-      ['G4','B4','D5','B4']
-    ];
-    var seqIndex = 0;
-    var noteIndex = 0;
-
-    function playNote(freq, time, dur){
-      var osc = ctx.createOscillator();
-      var gain = ctx.createGain();
-      osc.type = 'triangle';
-      osc.frequency.setValueAtTime(freq, time);
-
-      gain.gain.setValueAtTime(0, time);
-      gain.gain.linearRampToValueAtTime(0.16, time + 0.05);
-      gain.gain.exponentialRampToValueAtTime(0.001, time + dur);
-
-      osc.connect(gain);
-      gain.connect(masterGain);
-      osc.start(time);
-      osc.stop(time + dur + 0.05);
-    }
-
-    function scheduleStep(){
-      if(!isPlaying) return;
-      var chord = sequence[seqIndex];
-      var noteName = chord[noteIndex];
-      var now = ctx.currentTime;
-      playNote(notes[noteName], now, 1.1);
-
-      noteIndex++;
-      if(noteIndex >= chord.length){
-        noteIndex = 0;
-        seqIndex = (seqIndex + 1) % sequence.length;
-      }
-      loopTimer = setTimeout(scheduleStep, 620);
-    }
-
-    function startMusic(){
-      if(isPlaying) return;
-      try{
-        ctx = new (window.AudioContext || window.webkitAudioContext)();
-        masterGain = ctx.createGain();
-        masterGain.gain.value = 0.55;
-        masterGain.connect(ctx.destination);
-        isPlaying = true;
-        scheduleStep();
-      }catch(e){
-        // si el navegador no soporta audio, la página funciona igual sin música
-      }
-    }
-
     function openGift(){
       if(opened) return;
       opened = true;
-      startMusic();
       cover.classList.add('opened');
       content.classList.remove('hidden-init');
     }
