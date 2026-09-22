@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Conociéndote</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream: #FBF6EA;
+    --cream-2: #F5EDDA;
+    --yellow: #E8B84B;
+    --yellow-deep: #C99A2E;
+    --leaf: #6B7A4F;
+    --leaf-deep: #4E5C38;
+    --sea: #6E9796;
+    --sea-2: #7FA5A0;
+    --ink: #3E3226;
+    --ink-soft: #6B5D4C;
+
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *{ box-sizing: border-box; }
+  html{
+    scroll-padding-top: env(safe-area-inset-top, 0px);
+  }
+  html, body{
+    height: 100%;
+    margin: 0;
+  }
+  body{
+    background: linear-gradient(180deg, var(--cream) 0%, var(--cream-2) 55%, #F0E6CE 100%);
+    color: var(--ink);
+    font-family: 'Jost', sans-serif;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* ---------- decorative background ---------- */
+  .bg-sea{
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 38vh;
+    background: linear-gradient(180deg, rgba(127,165,160,0) 0%, rgba(127,165,160,0.16) 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .wave-line{
+    position: absolute;
+    left: 0; right: 0;
+    width: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+  }
+
+  .petal{
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.85;
+  }
+
+  /* ---------- layout ---------- */
+  .page{
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 560px;
+    padding: 48px 28px 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+
+  .kicker{
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    color: var(--ink-soft);
+    margin: 22px 0 6px;
+    text-align: center;
+  }
+
+  h1{
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-style: italic;
+    font-size: clamp(34px, 9vw, 46px);
+    color: var(--yellow-deep);
+    margin: 0 0 30px;
+    text-align: center;
+    line-height: 1.15;
+  }
+
+  .poem{
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(19px, 4.6vw, 22px);
+    line-height: 1.75;
+    color: var(--ink);
+    text-align: left;
+    max-width: 30ch;
+    margin: 0 auto;
+  }
+
+  .poem p{
+    margin: 0 0 1.7em;
+  }
+  .poem p:last-child{ margin-bottom: 0; }
+
+  .divider{
+    width: 100%;
+    max-width: 320px;
+    height: 34px;
+    margin: 40px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .closing{
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--ink-soft);
+    text-align: center;
+    margin-top: 4px;
+  }
+
+  .footer-flowers{
+    margin-top: 46px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (prefers-reduced-motion: no-preference){
+    .bloom{
+      animation: bloom-in 1.4s ease-out both;
+    }
+    @keyframes bloom-in{
+      from{ opacity: 0; transform: translateY(10px) scale(0.98); }
+      to{ opacity: 1; transform: translateY(0) scale(1); }
+    }
+  }
+</style>
+</head>
+<body>
+
+  <div class="bg-sea"></div>
+
+  <!-- scattered petals -->
+  <svg class="petal" style="top:6%; left:8%; width:26px;" viewBox="0 0 24 24"><path d="M12 2 C15 6 15 10 12 13 C9 10 9 6 12 2 Z" fill="#E8B84B" opacity="0.55"/></svg>
+  <svg class="petal" style="top:14%; right:10%; width:20px;" viewBox="0 0 24 24"><path d="M12 2 C15 6 15 10 12 13 C9 10 9 6 12 2 Z" fill="#C99A2E" opacity="0.4"/></svg>
+  <svg class="petal" style="top:32%; left:4%; width:16px;" viewBox="0 0 24 24"><path d="M12 2 C15 6 15 10 12 13 C9 10 9 6 12 2 Z" fill="#6B7A4F" opacity="0.35"/></svg>
+  <svg class="petal" style="bottom:18%; right:6%; width:22px;" viewBox="0 0 24 24"><path d="M12 2 C15 6 15 10 12 13 C9 10 9 6 12 2 Z" fill="#E8B84B" opacity="0.45"/></svg>
+
+  <div class="page">
+
+    <div class="hero bloom">
+      <!-- hand-drawn sunflower cluster, original illustration -->
+      <svg width="180" height="150" viewBox="0 0 180 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- stems -->
+        <path d="M90 150 C88 120 92 100 90 78" stroke="#6B7A4F" stroke-width="3" stroke-linecap="round"/>
+        <path d="M60 150 C62 128 66 112 72 96" stroke="#6B7A4F" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M122 150 C118 130 112 116 104 100" stroke="#6B7A4F" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- leaves -->
+        <path d="M90 118 C76 116 68 124 64 136 C80 138 90 132 90 118 Z" fill="#6B7A4F"/>
+        <path d="M92 108 C106 105 116 112 120 124 C104 126 92 120 92 108 Z" fill="#83935F"/>
+
+        <!-- small flower left -->
+        <g transform="translate(72,88)">
+          <g fill="#F2CB6C">
+            <ellipse cx="0" cy="-16" rx="6" ry="10"/>
+            <ellipse cx="0" cy="16" rx="6" ry="10"/>
+            <ellipse cx="-16" cy="0" rx="10" ry="6"/>
+            <ellipse cx="16" cy="0" rx="10" ry="6"/>
+            <ellipse cx="-11" cy="-11" rx="9" ry="6" transform="rotate(-45 -11 -11)"/>
+            <ellipse cx="11" cy="-11" rx="9" ry="6" transform="rotate(45 11 -11)"/>
+            <ellipse cx="-11" cy="11" rx="9" ry="6" transform="rotate(45 -11 11)"/>
+            <ellipse cx="11" cy="11" rx="9" ry="6" transform="rotate(-45 11 11)"/>
+          </g>
+          <circle cx="0" cy="0" r="8" fill="#8B5E34"/>
+        </g>
+
+        <!-- small flower right -->
+        <g transform="translate(104,74)">
+          <g fill="#EFC050">
+            <ellipse cx="0" cy="-13" rx="5" ry="8"/>
+            <ellipse cx="0" cy="13" rx="5" ry="8"/>
+            <ellipse cx="-13" cy="0" rx="8" ry="5"/>
+            <ellipse cx="13" cy="0" rx="8" ry="5"/>
+            <ellipse cx="-9" cy="-9" rx="7" ry="5" transform="rotate(-45 -9 -9)"/>
+            <ellipse cx="9" cy="-9" rx="7" ry="5" transform="rotate(45 9 -9)"/>
+            <ellipse cx="-9" cy="9" rx="7" ry="5" transform="rotate(45 -9 9)"/>
+            <ellipse cx="9" cy="9" rx="7" ry="5" transform="rotate(-45 9 9)"/>
+          </g>
+          <circle cx="0" cy="0" r="6.5" fill="#8B5E34"/>
+        </g>
+
+        <!-- big central sunflower -->
+        <g transform="translate(90,54)">
+          <g fill="#E8B84B">
+            <ellipse cx="0" cy="-24" rx="9" ry="16"/>
+            <ellipse cx="0" cy="24" rx="9" ry="16"/>
+            <ellipse cx="-24" cy="0" rx="16" ry="9"/>
+            <ellipse cx="24" cy="0" rx="16" ry="9"/>
+            <ellipse cx="-17" cy="-17" rx="13" ry="8" transform="rotate(-45 -17 -17)"/>
+            <ellipse cx="17" cy="-17" rx="13" ry="8" transform="rotate(45 17 -17)"/>
+            <ellipse cx="-17" cy="17" rx="13" ry="8" transform="rotate(45 -17 17)"/>
+            <ellipse cx="17" cy="17" rx="13" ry="8" transform="rotate(-45 17 17)"/>
+          </g>
+          <circle cx="0" cy="0" r="13" fill="#8B5E34"/>
+          <circle cx="0" cy="0" r="13" fill="url(#seedtex)" opacity="0.5"/>
+        </g>
+
+        <defs>
+          <radialGradient id="seedtex" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#6E4A28"/>
+            <stop offset="100%" stop-color="#8B5E34" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <p class="kicker">para ti</p>
+    <h1>Conociéndote</h1>
+
+    <div class="poem bloom">
+      <p>Hay algo lindo en esto que empieza,<br>
+      en irte descubriendo despacio,<br>
+      tus ojos, esa forma tuya de entregarte a lo que haces,<br>
+      la calma que me das sin siquiera intentarlo.</p>
+
+      <p>Contigo el tiempo se siente distinto,<br>
+      más lento, más mío, más cierto,<br>
+      me pones nervioso de la manera buena,<br>
+      esa que a uno lo hace querer ser mejor persona.</p>
+
+      <p>No sé todavía qué nombre tiene esto,<br>
+      solo sé que quiero seguir aquí,<br>
+      conociéndote un poco más cada día,<br>
+      dejando que lo bonito siga su curso.</p>
+
+      <p>Porque hay amores que empiezan gritando<br>
+      y otros que llegan despacio, como el tuyo,<br>
+      y yo, sin apuro,<br>
+      solo quiero seguir descubriéndote.</p>
+    </div>
+
+    <div class="divider">
+      <svg width="220" height="24" viewBox="0 0 220 24" fill="none">
+        <path d="M2 12 C 40 2, 60 22, 100 12 S 160 2, 180 12 S 210 20, 218 12"
+              stroke="#7FA5A0" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <p class="closing">con calma, sin apuro, contigo</p>
+
+    <div class="footer-flowers">
+      <svg width="120" height="40" viewBox="0 0 120 40" fill="none">
+        <g fill="#E8B84B" opacity="0.9">
+          <ellipse cx="20" cy="20" rx="4" ry="7"/>
+          <ellipse cx="20" cy="20" rx="7" ry="4"/>
+        </g>
+        <circle cx="20" cy="20" r="3.4" fill="#8B5E34"/>
+        <g fill="#EFC050" opacity="0.9">
+          <ellipse cx="60" cy="14" rx="3.4" ry="6"/>
+          <ellipse cx="60" cy="14" rx="6" ry="3.4"/>
+        </g>
+        <circle cx="60" cy="14" r="2.8" fill="#8B5E34"/>
+        <g fill="#E8B84B" opacity="0.9">
+          <ellipse cx="98" cy="22" rx="3.8" ry="6.6"/>
+          <ellipse cx="98" cy="22" rx="6.6" ry="3.8"/>
+        </g>
+        <circle cx="98" cy="22" r="3.1" fill="#8B5E34"/>
+      </svg>
+    </div>
+
+  </div>
+
+</body>
+</html>
